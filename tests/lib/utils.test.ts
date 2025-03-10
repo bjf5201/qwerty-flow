@@ -1,4 +1,4 @@
-import { formatPercentage, countMistakes } from '../../src/lib/utils';
+import { formatPercentage, countMistakes, calculateAccuracy } from '../../src/lib/utils';
 
 describe('formatPercentage', () => {
   it('should format a simple decimal as a percentage', () => {
@@ -37,5 +37,25 @@ describe('countMistakes', () => {
     const str3 = 'worlds';
     const str4 = 'hello';
     expect(countMistakes(str3, str4)).toBe(5);
+  });
+});
+
+describe('calculateAccuracy', () => {
+  it('should calculate the percentage correct out of the total words completed', () => {
+    const words = ['hello', 'world', 'this', 'is', 'a', 'test'];
+    const typedWords = ['hello', 'wold', 'this', 'is', 'a', 'test'];
+    expect(calculateAccuracy(words.length, typedWords.length)).toBe('83%');
+  });
+
+  it('should calculate the percentage correct out of the total words completed with no words', () => {
+    const words = [];
+    const typedWords = [];
+    expect(calculateAccuracy(words.length, typedWords.length)).toBe('0%');
+  });
+
+  it('should calculate the percentage correct out of the total words completed with no typed words', () => {
+    const words = ['hello', 'world', 'this', 'is', 'a', 'test'];
+    const typedWords = [];
+    expect(calculateAccuracy(words.length, typedWords.length)).toBe('0%');
   });
 });
