@@ -26,16 +26,16 @@ describe('countMistakes', () => {
   it('should count the number of mistakes in two strings with different characters', () => {
     const str1 = 'hello';
     const str2 = 'world';
-    expect(countMistakes(str1, str2)).toBe(5);
+    expect(countMistakes(str1, str2)).toBe(4);
   });
 
   it('should count the number of mistakes in two strings with different characters and lengths', () => {
     const str1 = 'hello';
     const str2 = 'worlds';
-    expect(countMistakes(str1, str2)).toBe(6);
+    expect(countMistakes(str1, str2)).toBe(5);
 
-    const str1 = 'worlds';
-    const str2 = 'hello';
-    expect(countMistakes(str1, str2)).toBe(6);
+    const str3 = 'worlds';
+    const str4 = 'hello';
+    expect(countMistakes(str3, str4)).toBe(5);
   });
 });
