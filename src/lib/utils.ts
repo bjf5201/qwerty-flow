@@ -37,8 +37,8 @@ export function countMistakes(expected: string[], actual: string[]) {
 
 export function calculateAccuracy(errors: number, totalLetters: number) : number {
     if (totalLetters > 0) {
-      const correct = totalLetters - errors;
-      return (correct / totalLetters);
+      const correctLetters = totalLetters - errors;
+      return (correctLetters / totalLetters);
     }
 
     return 0;
