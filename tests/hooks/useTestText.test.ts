@@ -1,14 +1,23 @@
 import { renderHook } from '@testing-library/react';
-import { useTestText } from "../../src/hooks/useTestText";
+import { getTestText } from "../../src/hooks/useTestText";
 
-describe('useTestText', () => {
-  it('should return the correct test description content', () => {
-    const { result } = renderHook(() => useTestText());
-    expect(result.current.description).toBe("Test description");
+describe('getTestText', async () => {
+  it('should return a test text object', async () => {
+    const { result } = renderHook(() => getTestText());
+    const testText = await result.current;
+    expect(testText).toHaveProperty('name');
+    expect(testText).toHaveProperty('description');
   });
 
-  it('should return the correct test name content', () => {
-    const { result } = renderHook(() => useTestText());
-    expect(result.current.name).toBe("Test Agency");
+  it('should return a test text object with a name as a string', async () => {
+    const { result } = renderHook(() => getTestText());
+    const testText = await result.current;
+    expect(testText.name).toEqual(expect.any(String));
+  });
+
+  it('should return a test text object with a description as a string', async () => {
+    const { result } = renderHook(() => getTestText());
+    const testText = await result.current;
+    expect(testText.description).toEqual(expect.any(String));
   });
 })
